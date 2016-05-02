@@ -4,7 +4,7 @@ node("docker") {
   stage 'build'
   image = docker.build('localhost:6000/slushpupie/artifactory')
 
-  if env.GIT_BRANCH == 'origin/master' {
+  if(env.GIT_BRANCH == 'origin/master'){
     stage 'publish'
     image.push()
   }
